@@ -1,0 +1,44 @@
+CREATE TABLE STUDENT
+(
+sid INT,
+sname VARCHAR(25),
+dob VARCHAR(12),
+physics INT,
+chemistry INT,
+maths INT
+
+);
+DESCRIBE STUDENT;
+
+INSERT INTO STUDENT(sid,sname,dob,physics,chemistry,maths) VALUES(1,'Abi','06-07-1999',89,88,90),(2,'Abhiya','08-10-1999',70,75,80),(3,'Athira','11-07-1998',90,89,80),(4,'Ayaan','12-12-1999',70,88,86),(5,'Ishaan','09-05-1999',50,65,73);
+SELECT * FROM STUDENT;
+SELECT sid,sname FROM STUDENT  WHERE dob=(SELECT max(dob)from STUDENT);
+SELECT * FROM STUDENT WHERE maths >=40 and (physics >=40 or chemistry >=40);
+ALTER TABLE STUDENT ADD total int;
+ALTER TABLE STUDENT ADD average float(10,3);
+DESCRIBE STUDENT;
+SELECT sname FROM STUDENT WHERE maths=(SELECT max(maths) FROM STUDENT);
+SELECT sname FROM STUDENT WHERE chemistry=(SELECT min(chemistry) FROM STUDENT);
+UPDATE STUDENT SET total=physics+chemistry+maths;
+SELECT * FROM STUDENT;
+UPDATE STUDENT SET average=total/3;
+SELECT * FROM STUDENT;
+SELECT * FROM STUDENT ORDER BY total DESC;
+ALTER TABLE STUDENT RENAME COLUMN average TO avg_mark;
+describe student;
+SELECT * FROM STUDENT;
+SELECT *FROM STUDENT WHERE avg_mark > (SELECT AVG(avg_mark) FROM STUDENT);
+SELECT COUNT(*) FROM STUDENT WHERE AVG_MARK > (SELECT AVG(AVG_MARK) FROM STUDENT);
+SELECT AVG(avg_mark) AS overall_average FROM STUDENT;
+
+
+
+
+
+
+
+
+
+
+
+
